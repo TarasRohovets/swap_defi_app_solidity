@@ -1,3 +1,7 @@
-<nav class="navbar navbar-dark bg-primary">
-   Ethereum 
-  </nav>
+<nav class="navbar">
+  <a class="title">X-Finance DeFi</a>
+
+  <div class="connect-wallet" (click)="resetTest()">Reset Test</div>
+  <div class="connect-wallet" (click)="connectWallet()" *ngIf="!account">Connect Wallet</div>
+  <div class="connect-wallet" *ngIf="account">{{account}}</div>
+</nav>
