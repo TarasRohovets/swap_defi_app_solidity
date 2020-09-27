@@ -1,0 +1,21 @@
+.defi-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.swap-box{
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+
+    border-radius: 10px;
+    border-color: rgb(91, 1, 143);
+    padding: 5px;
+}
+
+.text {
+    color: white;
+    width: 70px;
+}
