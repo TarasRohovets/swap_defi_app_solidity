@@ -1,3 +1,4 @@
 export interface IAccount {
-    accountId: string;
+    accountId?: string;
+   // web3?: any; // test
 }

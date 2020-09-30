@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.accountFromState.subscribe(res => { console.log(res) })
+    // this.accountFromState.subscribe(res => { console.log(res) })
   }
 
 

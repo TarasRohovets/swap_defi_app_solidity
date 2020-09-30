@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.modules';
 import { SwapComponent } from '../swap/swap.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SwapComponent } from '../swap/swap.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
     SharedModule
   ]
 })
