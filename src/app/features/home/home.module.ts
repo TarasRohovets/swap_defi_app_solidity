@@ -6,10 +6,11 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.modules';
 import { SwapComponent } from '../swap/swap.component';
 import { FormsModule } from '@angular/forms';
+import { YieldFarmingComponent } from '../yield-farming/yield-farming.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, SwapComponent],
+  declarations: [HomeComponent, SwapComponent, YieldFarmingComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
