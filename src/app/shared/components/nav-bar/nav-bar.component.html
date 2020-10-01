@@ -1,7 +1,13 @@
 <nav class="navbar">
   <a class="title">X-Finance DeFi</a>
 
-  <div class="connect-wallet" (click)="resetTest()">Reset Test</div>
-  <div class="connect-wallet" (click)="connectWallet()" *ngIf="!account">Connect Wallet</div>
-  <div class="connect-wallet" *ngIf="account">{{account}}</div>
+
+  <div class="defi-row">
+    <div>
+      <div class="connect-wallet" (click)="connectWallet()" *ngIf="!account">Connect Wallet</div>
+      <div class="connect-wallet" *ngIf="account">{{account}}</div>
+    </div>
+    <div class="connect-wallet" (click)="resetTest()">Log Off</div>
+  </div>
+
 </nav>

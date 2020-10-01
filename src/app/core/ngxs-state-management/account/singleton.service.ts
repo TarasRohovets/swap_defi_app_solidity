@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SingletonService {
-  // shared variables
+
+  loadBlockChain: EventEmitter<any> = new EventEmitter<any>();
+
   account;
   web3;
   balance;

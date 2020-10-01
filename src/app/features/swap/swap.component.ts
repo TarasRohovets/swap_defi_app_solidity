@@ -3,9 +3,6 @@ import { SingletonService } from 'src/app/core/ngxs-state-management/account/sin
 import Web3 from 'web3';
 import XToken from 'src/abis/XToken.json';
 import Swap from 'src/abis/Swap.json';
-import { Select } from '@ngxs/store';
-import { AccountState } from 'src/app/core/ngxs-state-management/account/account.state';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-swap',
@@ -22,8 +19,8 @@ export class SwapComponent implements OnInit {
   etherInput;
   xTokenInput;
 
-  userBalanceEth; // share
-  userBalanceXtk; // share
+  userBalanceEth = '0'; // share
+  userBalanceXtk = '0'; // share
   xToken; // share
   swapSmartContract; // share
 
@@ -36,19 +33,21 @@ export class SwapComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // this.web3FromState.subscribe(res => { this.test = res; console.log(res) })
-   
-    this.loadBlockChainData();
+    this.singletonService.loadBlockChain.subscribe(res => {
+      if (res) {
+        this.loadBlockChainData();
+      }
+    });
   }
 
   async loadBlockChainData() {
     this.web3 = this.singletonService.web3;
     this.account = this.singletonService.account;
     this.userBalanceEth = this.singletonService.balance;
+
     this.networkId = await this.web3.eth.net.getId();
     await this.loadXToken();
     await this.loadSwapSmartContract();
-
   }
 
   async loadXToken() {
@@ -71,24 +70,31 @@ export class SwapComponent implements OnInit {
     }
   }
 
-  async buyTokens() {
-    await this.loadBlockChainData();
+  buyTokens() {
     const convertedetherInput = this.web3.utils.toWei(this.etherInput.toString(), 'ether');
     this.swapSmartContract.methods.buyTokens()
-      .send({value: convertedetherInput, from: this.account})
-      .on('transactionHash', (hash) => {});
+      .send({ value: convertedetherInput, from: this.account })
+      .on('transactionHash', (hash) => {
+        // reload data
+        this.loadBlockChainData();
+        this.etherInput = null;
+        this.xTokenInput = null;
+      });
   }
   sellTokens() {
     const convertedXTokenInput = this.web3.utils.toWei(this.xTokenInput.toString(), 'ether');
     // Would be here a Rate converter to Ether from out Token
     this.xToken.methods.approve(this.swapSmartContract._address, convertedXTokenInput)
-    .send({from: this.account}).on('transactionHash', (hash) => {
-       this.swapSmartContract.methods.sellTokens(convertedXTokenInput)
-       .send({from: this.account})
-       .on('transactionHash', (hash) => {
-       });
-    })
-   
+      .send({ from: this.account }).on('transactionHash', (hash) => {
+        this.swapSmartContract.methods.sellTokens(convertedXTokenInput)
+          .send({ from: this.account })
+          .on('transactionHash', (hash) => {
+            this.loadBlockChainData();
+            this.etherInput = null;
+            this.xTokenInput = null;
+          });
+      })
+
   }
 
 }

@@ -1,3 +1,8 @@
+.main-container {
+    margin-top: 50px;
+}
+
+
 .defi-row {
     display: flex;
     flex-direction: row;
@@ -29,6 +34,10 @@
     width: 50px;
 }
 
+.bal {
+    margin-left: 20px;
+}
+
 .icon-container {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -36,6 +45,7 @@
 
 .button-container {
     width: 100%;
+    margin-bottom: 5px;
     .btn {
         width: 100%;
     }
@@ -43,4 +53,9 @@
 
 svg {
     fill: white;
+}
+
+.balance {
+    display: flex;
+    //margin-left: auto;
 }
