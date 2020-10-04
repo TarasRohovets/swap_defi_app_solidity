@@ -38,6 +38,11 @@ export class SwapComponent implements OnInit {
         this.loadBlockChainData();
       }
     });
+    if (this.singletonService.web3 !== undefined ||
+      this.singletonService.account !== undefined ||
+      this.singletonService.balance !== undefined) {
+      this.loadBlockChainData();
+    }
   }
 
   async loadBlockChainData() {

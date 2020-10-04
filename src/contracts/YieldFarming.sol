@@ -9,9 +9,9 @@ contract YieldFarming {
     address public owner;
 
     address[] public depositers;
-    mapping(address => uint256) depositBalance;
-    mapping(address => bool) hasDeposited;
-    mapping(address => bool) isDepositing;
+    mapping(address => uint256) public depositBalance;
+    mapping(address => bool) public hasDeposited;
+    mapping(address => bool) public isDepositing;
 
     constructor(XToken _xtoken) public {
         xtoken = _xtoken;
