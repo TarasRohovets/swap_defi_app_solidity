@@ -1,0 +1,24 @@
+.main-container-home {
+    background: rgb(49, 48, 48);
+    height: 100%;
+    width: 100%;
+}
+
+.defi-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+
+    .defi-center{
+        display: flex;
+        flex-direction: row;
+
+        .btn {
+            width: 150px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+        
+    }
+}

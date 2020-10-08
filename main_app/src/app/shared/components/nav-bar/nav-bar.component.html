@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <a class="title">X-Finance DeFi</a>
+
+
+  <div class="defi-row">
+    <button type="button" class="btn btn-primary" (click)="connectWallet()" *ngIf="!account">Connect Wallet</button>
+    <div class="connect-wallet" *ngIf="account">{{account}}</div>
+    <button type="button" class="btn btn-primary" (click)="resetTest()">Log Off</button>
+  </div>
+
+</nav>

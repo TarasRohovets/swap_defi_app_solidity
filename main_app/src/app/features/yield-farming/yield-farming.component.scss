@@ -1,0 +1,21 @@
+.list-container {
+    display: flex;
+    justify-content: center;
+}
+
+.defi-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    > div,
+    button,
+    input {
+        margin-left: 5px;
+        border-radius: 10px;
+    }
+}
+
+.list-group-item {
+    margin-bottom: 10px;
+    border-radius: 15px;
+}

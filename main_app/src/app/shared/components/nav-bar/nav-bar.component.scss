@@ -1,0 +1,28 @@
+.navbar {
+    background: rgb(49, 48, 48);
+    height: 60px;
+}
+
+.title {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.connect-wallet {
+    color:mediumpurple;
+    font-size: larger;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.btn {
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+.defi-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

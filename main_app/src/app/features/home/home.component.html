@@ -1,0 +1,15 @@
+<app-nav-bar></app-nav-bar>
+<div class="main-container-home">
+  <div class="defi-row">
+    <div class="defi-center">
+      <button type="button" class="btn btn-dark" (click)="toogle(0)">Swap</button>
+      <button type="button" class="btn btn-dark" (click)="toogle(1)">Deposit Tokens</button>
+      <button type="button" class="btn btn-dark" (click)="toogle(2)">DEX</button>
+    </div>
+  </div>
+  <div class="content">
+    <app-swap *ngIf="toogled===0"></app-swap>
+    <app-yield-farming *ngIf="toogled===1"></app-yield-farming>
+    <app-dex *ngIf="toogled===2"></app-dex>
+  </div>
+</div>
