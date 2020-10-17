@@ -24,7 +24,7 @@ contract DecetralizedExchange {
     }
 
     // like liquidity pool
-    function price(
+    function priceDeterminator(
         uint256 input_amount, // how much we want
         uint256 input_reserve, // ETH reserves
         uint256 output_reserve // Some tokens reserves
@@ -36,9 +36,9 @@ contract DecetralizedExchange {
     }
 
     //swap
-    function ethToToken() public payable returns (uint256) {
+    function ethToTokenSwap() public payable returns (uint256) {
         uint256 token_reserve = generic_token.balanceOf(address(this));
-        uint256 tokens_bought = price(
+        uint256 tokens_bought = priceDeterminator(
             msg.value,
             address(this).balance.sub(msg.value),
             token_reserve
@@ -48,9 +48,9 @@ contract DecetralizedExchange {
     }
 
     //swap
-    function tokenToEth(uint256 tokens) public returns (uint256) {
+    function tokenToEthSwap(uint256 tokens) public returns (uint256) {
         uint256 token_reserve = generic_token.balanceOf(address(this));
-        uint256 eth_bought = price(
+        uint256 eth_bought = priceDeterminator(
             tokens,
             token_reserve,
             address(this).balance
@@ -60,7 +60,7 @@ contract DecetralizedExchange {
         return eth_bought;
     }
 
-    function deposit() public payable returns (uint256) {
+    function depositFunds() public payable returns (uint256) {
         uint256 eth_reserve = address(this).balance.sub(msg.value);
         uint256 token_reserve = generic_token.balanceOf(address(this));
         uint256 token_amount = (msg.value.mul(token_reserve) / eth_reserve).add(
@@ -74,7 +74,7 @@ contract DecetralizedExchange {
     }
      
     
-    function withdraw(uint256 amount) public returns (uint256, uint256) {
+    function withdrawFunds(uint256 amount) public returns (uint256, uint256) {
         uint256 token_reserve = generic_token.balanceOf(address(this));
         uint256 eth_amount = amount.mul(address(this).balance) / totalLiquidity;
         uint256 token_amount = amount.mul(token_reserve) / totalLiquidity;
